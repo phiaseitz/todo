@@ -14,9 +14,9 @@ var path = require('path');
 
 var index = require('./routes/index'); //all the routes
 // configuration =================
-// console.log(process.env['MONGOLAB_URI']);
-// mongoose.connect(process.env['MONGOLAB_URI']);
-mongoose.connect('mongodb://heroku_pzt2dr5d:evsvd8oev3rut5cniqhmi3ge7r@ds015508.mongolab.com:15508/heroku_pzt2dr5d');
+console.log(process.env['MONGOLAB_URI']);
+mongoose.connect(process.env['MONGOLAB_URI']);
+// mongoose.connect('mongodb://heroku_pzt2dr5d:evsvd8oev3rut5cniqhmi3ge7r@ds015508.mongolab.com:15508/heroku_pzt2dr5d');
 
 var db = mongoose.connection;
 
