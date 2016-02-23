@@ -15,7 +15,7 @@ var path = require('path');
 var index = require('./routes/index'); //all the routes
 // configuration =================
 
-mongoose.connect(ENV['PROD_MONGODB']);
+mongoose.connect(process.env.PROD_MONGODB);
 
 var db = mongoose.connection;
 
