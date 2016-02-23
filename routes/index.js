@@ -113,7 +113,7 @@ routes.removeTodo = function(req, res, next){
 }
 
 routes.home = function(req, res, next) {
-    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendfile('./../public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 }
 
 module.exports = routes;

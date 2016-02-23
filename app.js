@@ -49,7 +49,7 @@ app.post('/api/saveEditedTodo', index.saveTodo);
 app.post('/api/removeTodo', index.removeTodo);
 
 // application -------------------------------------------------------------
-app.get('*', index.home);
+app.get('/', index.home);
 
 // listen (start app with node server.js) ======================================
 app.listen(3000);
