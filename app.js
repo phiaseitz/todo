@@ -15,7 +15,7 @@ var path = require('path');
 var index = require('./routes/index'); //all the routes
 // configuration =================
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect(PROD_MONGODB);
 
 var db = mongoose.connection;
 
