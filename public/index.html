@@ -1,0 +1,75 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<htmls>
+<head>
+    <!-- Angulars Material CSS now available via Google CDN; version 0.6 used here -->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
+    <!-- My own stylesheet -->
+    <link rel="stylesheet" type="text/css" href="./stylesheets/home.css">
+    <!-- Angular Material Dependencies -->
+    <script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.js"></script>
+
+    <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.js"></script>
+    <script type="text/javascript" src="./javascripts/core.js"></script>
+    <title> To Do</title>
+</head>
+
+<body>
+    <div ng-app="todoApp">
+        <div ng-controller="AppCtrl"  class="md-red" layout="column" layout-fill>
+            
+            <!-- HEADER AND TODO COUNT -->
+            <div class="text-center">
+                <h1 class="todoTitle">To-Do</h1>
+                <span class="subtitle">Items left to do: {{ activeCount }}</span>
+            </div>
+
+            <!-- Tabs -->
+            <md-tabs md-selected="selectedIndex"  md-align-tabs="top" md-dynamic-height>
+                <md-tab ng-repeat="tab in tabs">
+                    <md-tab-label>{{tab.title}}</md-tab-label>
+                    <md-tab-body> 
+                        <!-- FORM TO CREATE TODOS -->
+                        <div id="todo-form" class="row">
+                            <div class="col-sm-8 col-sm-offset-2 text-center">
+                                <form ng-submit="createTodo()">
+                                    <div class="form-group">
+                                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                        <input type="text" class="form-control  large-input" placeholder="Add a to-do..." ng-model="formData.title"> 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                            
+                        <!-- TODO LIST -->
+                        <div id="todo-list">
+                                <!-- LOOP OVER THE TODOS IN $scope.todos -->
+                                <div class="row" ng-repeat="todo in todos">
+
+                                    <div ng-show="!todo.editing" ng-class="{completed: todo.completed, editing: todo == editedTodo}" class = "todo-elem">
+                                        <input type="checkbox" ng-model="todo.completed" ng-change="toggleTodoCompleted(todo)" ng-checked="todo.completed"> <label ng-class="{strike: todo.completed}" ng-dblclick="startEditing(todo);"> {{ todo.title }} </label> <md-button class="destroy md-accent" ng-click="removeTodo(todo)">X</md-button>
+                                    </div>
+
+                                    <form ng-show="todo.editing" ng-submit="saveEdits(todo, 'submit')">
+                                        <input class="edit" ng-trim="false" ng-model="todo.title" ng-blur="saveEdits(todo, 'blur')" todo-focus="todo.editing">
+                                    </form>
+                                </div>
+                        </div>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+ 
+            
+
+        </div>
+    </div>
+      
+</body>
+
+</html>
