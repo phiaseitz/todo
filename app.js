@@ -15,7 +15,7 @@ var path = require('path');
 var index = require('./routes/index'); //all the routes
 // configuration =================
 console.log(process.env['MONGOLAB_URI']);
-mongoose.connect(String(process.env['MONGOLAB_URI']));
+mongoose.connect(process.env['MONGOLAB_URI'], ["todos"], {authMechanism: 'ScramSHA1'});
 
 var db = mongoose.connection;
 
