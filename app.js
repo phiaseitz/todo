@@ -52,5 +52,6 @@ app.post('/api/removeTodo', index.removeTodo);
 app.get('/', index.home);
 
 // listen (start app with node server.js) ======================================
-app.listen(3000);
+var PORT = process.env.PORT || 3000;
+app.listen(PORT);
 console.log("App listening on port 3000");
